@@ -68,6 +68,8 @@ a {
 
 .site-header {
   position: fixed;
+  padding-top: 5px;
+  padding-bottom: 5px;
   inset: 0 0 auto;
   z-index: 100;
   transition: .3s ease;
@@ -990,6 +992,23 @@ p {
   display: grid;
   gap: 8px;
 }
+
+.map-card {
+  min-height: 360px;
+  overflow: hidden;
+}
+
+.map-card iframe {
+  display: block;
+  width: 100%;
+  min-height: 360px;
+  border: 0;
+}
+
+.footer-contact { display: grid; gap: 10px; }
+.footer-contact-item { display: flex; align-items: flex-start; gap: 9px; line-height: 1.5; }
+.footer-contact-item i { flex: 0 0 16px; color: var(--green); font-size: 15px; line-height: 1.4; }
+.footer-contact-item span { min-width: 0; }
 
 .footer a:hover {
   color: var(--green);
