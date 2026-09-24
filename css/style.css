@@ -703,6 +703,129 @@ p {
   font-size: 20px;
 }
 
+/* Installation slideshow */
+.show {
+  position: relative;
+}
+
+.show-viewport {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  min-height: 260px;
+  border-radius: 0 56px 0 56px;
+  box-shadow: var(--shadow);
+  background: var(--soft);
+}
+
+.show-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .7s ease, visibility .7s ease;
+}
+
+.show-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.show-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.show-slide figcaption {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  max-width: 430px;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, .94);
+  border-left: 4px solid var(--yellow);
+  box-shadow: 0 14px 34px rgba(8, 92, 34, .14);
+}
+
+.show-slide figcaption small {
+  color: var(--blue);
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.show-slide figcaption h3 {
+  margin-top: 6px;
+  font-size: 20px;
+}
+
+.show-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .92);
+  color: var(--green);
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 14px 32px rgba(18, 48, 31, .16);
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+
+.show-nav:hover {
+  background: var(--green);
+  color: var(--white);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.show-prev {
+  left: 20px;
+}
+
+.show-next {
+  right: 20px;
+}
+
+.show-dots {
+  position: absolute;
+  right: 26px;
+  bottom: 26px;
+  display: flex;
+  gap: 9px;
+}
+
+.show-dots button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .6);
+  box-shadow: 0 0 0 1px rgba(18, 48, 31, .2);
+  cursor: pointer;
+  transition: background .25s ease, transform .25s ease;
+}
+
+.show-dots button[aria-current="true"] {
+  background: var(--yellow);
+  box-shadow: 0 0 0 1px rgba(18, 48, 31, .28);
+  transform: scale(1.3);
+}
+
+.show-nav:focus-visible,
+.show-dots button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+}
+
 .cta-band {
   background: var(--green);
   color: var(--white);
@@ -1329,6 +1452,42 @@ p {
 
   .whatsapp-float {
     left: 18px;
+    bottom: 18px;
+  }
+
+  .show-viewport {
+    aspect-ratio: 4 / 3;
+    border-radius: 0 32px 0 32px;
+  }
+
+  .show-slide figcaption {
+    left: 12px;
+    right: 12px;
+    bottom: 56px;
+    max-width: none;
+    padding: 14px 16px;
+  }
+
+  .show-slide figcaption h3 {
+    font-size: 17px;
+  }
+
+  .show-nav {
+    width: 38px;
+    height: 38px;
+    font-size: 19px;
+  }
+
+  .show-prev {
+    left: 10px;
+  }
+
+  .show-next {
+    right: 10px;
+  }
+
+  .show-dots {
+    right: 12px;
     bottom: 18px;
   }
 }
