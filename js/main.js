@@ -22,17 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('[data-site-footer]').innerHTML = `<footer class="footer"><div class="container footer-grid"><div><a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Nature Energy Technologies Limited"></a><p style="margin-top:18px">Reliable solar, inverter and energy storage solutions for homes, businesses and essential operations.</p><div class="socials"><a href="https://wa.me/2348024340169" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="ri-whatsapp-line"></i></a><a href="mailto:natureenergytechnologies@gmail.com" aria-label="Email Nature Energy Technologies"><i class="ri-mail-line"></i></a></div></div><div><h3>Quick Links</h3><div class="footer-links">${navItems}</div></div><div><h3>Solutions</h3><div class="footer-links"><a href="products.html">Solar panels</a><a href="products.html">Inverters</a><a href="products.html">Batteries</a><a href="services.html">Installation & maintenance</a></div></div><div><h3>Contact</h3><div class="footer-contact"><a class="footer-contact-item" href="tel:+2349160953400"><i class="ri-phone-line"></i><span>09160953400</span></a><a class="footer-contact-item" href="tel:+2348024340169"><i class="ri-phone-line"></i><span>08024340169</span></a><a class="footer-contact-item" href="mailto:natureenergytechnologies@gmail.com"><i class="ri-mail-line"></i><span>natureenergytechnologies@gmail.com</span></a><a class="footer-contact-item" href="contact.html"><i class="ri-map-pin-line"></i><span>27, Lambe ILUYOMADE STREET, OFF AGO PALACE WAY, OKOTA, LAGOS</span></a></div></div></div><div class="container copyright"><span>© ${new Date().getFullYear()} Nature Energy Technologies Limited. All Rights Reserved.</span><span>Clean Energy. Brighter Tomorrow.</span></div></footer>`;
   document.body.insertAdjacentHTML('beforeend', '<a class="whatsapp-float" href="https://wa.me/2348024340169" target="_blank" rel="noopener" aria-label="Chat with Nature Energy Technologies on WhatsApp" title="Chat with us on WhatsApp"><i class="ri-whatsapp-line"></i></a>');
   document.querySelectorAll(`[data-page="${current}"]`).forEach(link => link.classList.add('active'));
-  setupNavigation(); setupScrollEffects(); setupForms(); setupFilters(); setupSlideshow(); setupContentMedia();
+  setupNavigation(); setupScrollEffects(); setupForms(); setupFilters(); setupSlideshow();
 });
-
-function setupContentMedia() {
-  const aboutImage = document.querySelector('img[alt="Engineer working with a solar installation"]');
-  if (aboutImage) { aboutImage.src = 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1000&q=85'; aboutImage.alt = 'Engineer working on solar electrical equipment'; }
-  const backupImage = [...document.querySelectorAll('.product-card')].find(card => card.querySelector('.product-meta')?.textContent.trim() === 'Backup power')?.querySelector('img');
-  if (backupImage) { backupImage.src = 'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&w=900&q=85'; backupImage.alt = 'Battery backup power storage equipment'; }
-  const residentialImage = document.querySelector('.project-card[data-category="residential"] img');
-  if (residentialImage) { residentialImage.src = 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1000&q=85'; residentialImage.alt = 'Residential rooftop solar project'; }
-}
 
 function setupSlideshow() {
   document.querySelectorAll('[data-slideshow]').forEach(root => {
@@ -51,7 +42,7 @@ function setupSlideshow() {
         buttons[i]?.setAttribute('aria-current', active ? 'true' : 'false');
       });
     };
-    const start = () => { stop(); if (!reduce) timer = setInterval(() => show(index + 1), 6000); };
+    const start = () => { stop(); if (!reduce) timer = setInterval(() => show(index + 1), 2000); };
     const step = delta => { show(index + delta); start(); };
     const buttons = slides.map((slide, i) => {
       const button = document.createElement('button');
