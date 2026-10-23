@@ -1,5 +1,5 @@
 const pages = {
-  'index.html': 'Home', 'about.html': 'About Us', 'products.html': 'Products', 'services.html': 'Services', 'projects.html': 'Projects', 'why-us.html': 'Why Choose Us', 'contact.html': 'Contact'
+  'index.html': 'Home', 'about.html': 'About Us', 'products.html': 'Products', 'packages.html': 'Packages', 'services.html': 'Services', 'projects.html': 'Projects', 'training.html': 'Training', 'why-us.html': 'Why Choose Us', 'contact.html': 'Contact'
 };
 
 const navItems = Object.entries(pages).map(([href, label]) => `<a href="${href}" data-page="${href}">${label}</a>`).join('');
@@ -8,8 +8,10 @@ const seoByPage = {
   'index.html': ['Nature Energy Technologies | Solar & Power Solutions', 'Reliable solar, inverter, battery and backup power solutions for homes and businesses in Nigeria.'],
   'about.html': ['About Nature Energy Technologies | Our Approach', 'Learn about Nature Energy Technologies Limited and our practical approach to solar and power solutions.'],
   'products.html': ['Solar Panels, Inverters & Batteries | Nature Energy', 'Explore solar panels, inverters, batteries and integrated energy systems from Nature Energy Technologies.'],
+  'packages.html': ['Solar Packages & Prices | Nature Energy Technologies', 'Compare Nature Energy solar and battery packages, including Basic, Comfort, Comfort Plus, Premium and Elite bundles.'],
   'services.html': ['Solar Installation & Maintenance Services | Nature Energy', 'Solar installation, inverter repairs, battery maintenance, diagnostics and energy consultation services.'],
   'projects.html': ['Solar & Energy Projects | Nature Energy Technologies', 'Explore solar, backup power and energy storage project categories from Nature Energy Technologies.'],
+  'training.html': ['Solar Training Sign Up | Nature Energy Technologies', 'Sign up for Nature Energy Technologies training and contact the team directly through WhatsApp.'],
   'why-us.html': ['Why Choose Nature Energy Technologies', 'Discover a practical approach to reliable solar, inverter and energy storage solutions.'],
   'contact.html': ['Contact Nature Energy Technologies | Request a Quote', 'Speak with Nature Energy Technologies about solar, inverter, battery and backup power solutions in Lagos and beyond.']
 };
@@ -21,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('[data-site-header]').innerHTML = `<div class="container navbar"><a class="brand" href="index.html" aria-label="Nature Energy Technologies home"><img class="brand-logo" src="logo.png" alt="Nature Energy Technologies Limited"></a><button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><i class="ri-menu-3-line"></i></button><nav class="nav-links" aria-label="Primary navigation">${navItems}<a class="button button-primary mobile-cta" href="contact.html">Get a Quote <i class="ri-arrow-right-up-line"></i></a></nav><a class="button button-primary nav-quote" href="contact.html">Get a Quote <i class="ri-arrow-right-up-line"></i></a></div><div class="nav-overlay" aria-hidden="true"></div>`;
   document.querySelector('[data-site-footer]').innerHTML = `<footer class="footer"><div class="container footer-grid"><div><a class="brand" href="index.html"><img class="brand-logo" src="logo.png" alt="Nature Energy Technologies Limited"></a><p style="margin-top:18px">Reliable solar, inverter and energy storage solutions for homes, businesses and essential operations.</p><div class="socials"><a href="https://wa.me/2348024340169" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="ri-whatsapp-line"></i></a><a href="mailto:natureenergytechnologies@gmail.com" aria-label="Email Nature Energy Technologies"><i class="ri-mail-line"></i></a></div></div><div><h3>Quick Links</h3><div class="footer-links">${navItems}</div></div><div><h3>Solutions</h3><div class="footer-links"><a href="products.html">Solar panels</a><a href="products.html">Inverters</a><a href="products.html">Batteries</a><a href="services.html">Installation & maintenance</a></div></div><div><h3>Contact</h3><div class="footer-contact"><a class="footer-contact-item" href="tel:+2349160953400"><i class="ri-phone-line"></i><span>09160953400</span></a><a class="footer-contact-item" href="tel:+2348024340169"><i class="ri-phone-line"></i><span>08024340169</span></a><a class="footer-contact-item" href="mailto:natureenergytechnologies@gmail.com"><i class="ri-mail-line"></i><span>natureenergytechnologies@gmail.com</span></a><a class="footer-contact-item" href="contact.html"><i class="ri-map-pin-line"></i><span>27, Lambe ILUYOMADE STREET, OFF AGO PALACE WAY, OKOTA, LAGOS</span></a></div></div></div><div class="container copyright"><span>© ${new Date().getFullYear()} Nature Energy Technologies Limited. All Rights Reserved.</span><span>Clean Energy. Brighter Tomorrow.</span></div></footer>`;
   document.body.insertAdjacentHTML('beforeend', '<a class="whatsapp-float" href="https://wa.me/2348024340169" target="_blank" rel="noopener" aria-label="Chat with Nature Energy Technologies on WhatsApp" title="Chat with us on WhatsApp"><i class="ri-whatsapp-line"></i></a>');
+  document.body.insertAdjacentHTML('beforeend', '<a class="packages-float" href="packages.html"><span class="packages-float-dot" aria-hidden="true"></span><span>Affordable packages here</span><i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>');
   document.querySelectorAll(`[data-page="${current}"]`).forEach(link => link.classList.add('active'));
-  setupNavigation(); setupScrollEffects(); setupForms(); setupFilters(); setupSlideshow();
+  setupNavigation(); setupScrollEffects(); setupForms(); setupTrainingForm(); setupFilters(); setupSlideshow();
 });
 
 function setupSlideshow() {
@@ -110,4 +113,28 @@ function setupScrollEffects() {
 }
 
 function setupForms() { document.querySelectorAll('form[data-quote-form]').forEach(form => form.addEventListener('submit', event => { event.preventDefault(); if (!form.checkValidity()) { form.reportValidity(); return; } form.querySelector('.form-note').style.display = 'block'; form.reset(); })); }
+function setupTrainingForm() {
+  document.querySelectorAll('form[data-training-form]').forEach(form => form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const values = new FormData(form);
+    const details = [
+      'Hello Nature Energy Technologies, I would like to sign up for N.E.T. Training.',
+      `My name is ${values.get('name')}.`,
+      `Phone number: ${values.get('phone')}.`,
+      `Email address: ${values.get('email') || 'Not provided'}.`,
+      `Training interest: ${values.get('interest')}.`,
+      values.get('message') ? `Additional information: ${values.get('message')}` : ''
+    ].filter(Boolean).join('\n');
+    const whatsappUrl = `https://wa.me/2348024340169?text=${encodeURIComponent(details)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    const status = form.querySelector('[data-training-status]');
+    status.textContent = 'Your sign-up message is prepared. If WhatsApp does not open automatically, use the link below. Review the details there and tap Send to complete your sign-up.';
+    status.style.display = 'block';
+    const fallback = form.querySelector('[data-training-whatsapp-link]');
+    fallback.href = whatsappUrl;
+    fallback.hidden = false;
+    form.reset();
+  }));
+}
 function setupFilters() { document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => { document.querySelectorAll('[data-filter]').forEach(btn => btn.classList.remove('active')); button.classList.add('active'); const value = button.dataset.filter; document.querySelectorAll('[data-category]').forEach(card => { card.hidden = value !== 'all' && card.dataset.category !== value; }); })); }

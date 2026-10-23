@@ -8,7 +8,7 @@ The website presents the company as a clean, practical and technically minded en
 
 ## Website
 
-The site is a responsive seven-page corporate website built with semantic HTML5, modern CSS3 and vanilla JavaScript.
+The site is a responsive nine-page corporate website built with semantic HTML5, modern CSS3 and vanilla JavaScript.
 
 ### Pages
 
@@ -17,8 +17,10 @@ The site is a responsive seven-page corporate website built with semantic HTML5,
 | Home | `index.html` | Company introduction, core solutions, process and calls to action |
 | About Us | `about.html` | Company direction, mission, vision, values and approach |
 | Products | `products.html` | Solar panels, inverters, batteries and complete system categories |
+| Packages | `packages.html` | Package bundle details, included equipment and prices |
 | Services | `services.html` | Installation, design, diagnostics, maintenance, repairs and support |
 | Projects | `projects.html` | Portfolio structure for approved residential, commercial and storage case studies |
+| Training | `training.html` | Training interest form that opens a prefilled WhatsApp message |
 | Why Choose Us | `why-us.html` | Practical reasons to work with Nature Energy and the delivery process |
 | Contact | `contact.html` | Contact information placeholders and quote-request form |
 
@@ -28,6 +30,9 @@ The site is a responsive seven-page corporate website built with semantic HTML5,
 - Official Nature Energy Technologies Limited logo from `logo.png`
 - Light, brand-led visual system using green, blue, yellow and white
 - Mobile off-canvas sidebar navigation with backdrop and keyboard dismissal
+- Package cards with supplied package artwork, bundle specifications and prices
+- Animated, site-wide link to the packages page
+- Training signup form that prepares a message for WhatsApp number 08024340169
 - Scroll-responsive sunrise-to-sunset visual element
 - Section reveal animations using GSAP and ScrollTrigger
 - Smooth scrolling using Lenis where motion preferences allow it
@@ -57,8 +62,10 @@ Third-party libraries are loaded from CDNs. The core content remains readable an
 ├── index.html
 ├── about.html
 ├── products.html
+├── packages.html
 ├── services.html
 ├── projects.html
+├── training.html
 ├── why-us.html
 ├── contact.html
 ├── logo.png
